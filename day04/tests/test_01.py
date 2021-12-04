@@ -4,7 +4,8 @@ import pytest
 def test_can_do_line():
     with open('tests/sample.txt','r') as f:
         lines = f.read().splitlines()
-        result = puzzle1(lines)
+        nums = list(map(int,list(lines.pop(0).split(","))))
+        result = puzzle1(lines,nums)
         assert result == 4512
 
 def test_can_parse_boards():
@@ -18,12 +19,12 @@ def test_can_check_boards():
         lines = f.read().splitlines()
         nums = list(map(int,list(lines.pop(0).split(","))))
         boards = get_boards(lines)
-        result = check_boards(boards,nums)
+        result = check_boards(boards,nums,[])
         assert result == 4512
 
-@pytest.mark.skip(reason="Not reached yet")
-def test_02():
+def test_can_let_the_squid_win():
     with open('tests/sample.txt','r') as f:
         lines = f.read().splitlines()
-        result = puzzle2(lines) 
-        assert result == 0
+        nums = list(map(int,list(lines.pop(0).split(","))))
+        result = puzzle2(lines,nums) 
+        assert result == 1924
